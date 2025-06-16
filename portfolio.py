@@ -1,139 +1,48 @@
 import streamlit as st
-import time
+from streamlit_option_menu import option_menu
 import plotly.graph_objects as go
 from streamlit_extras.let_it_rain import rain
 
-# Page config
-st.set_page_config(
-    page_title="Welcome to My Brain | Yuvraj Kumar",
-    layout="wide",
-    page_icon="🧠"
-)
+st.set_page_config(page_title="Welcome | Yuvraj", layout="wide")
 
-# Hide sidebar completely
+# Rainbow wave CSS bar
 st.markdown("""
     <style>
-        [data-testid="stSidebar"] {
-            display: none !important;
-        }
-        [data-testid="collapsedControl"] {
-            display: none !important;
-        }
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-        }
-        .navbar button {
-            background: transparent;
-            border: none;
-            font-size: 18px;
-            font-weight: 500;
-            color: white;
-            cursor: pointer;
-        }
-        .navbar button:hover {
-            color: #FFD700;
-        }
-        .content-space {
-            margin-top: 80px;
-        }
-    </style>
-""", unsafe_allow_html=True)
-
-# Navbar
-if "nav" in st.query_params:
-    st.session_state.page = st.query_params["nav"]
-else:
-    st.session_state.page = "home"
-
-# Define navbar pages
-pages = {
-    "home": "🏠 Home",
-    "about": "👤 About",
-    "projects": "💼 Projects",
-    "skills": "📑 Skills",
-    "contact": "📬 Contact"
-}
-
-# CSS for responsive two-row layout on small screens
-st.markdown("""
-    <style>
-    .nav-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        padding: 10px;
-        margin-bottom: 20px;
-    }
-
-    .nav-container a {
-        padding: 12px 20px;
-        font-size: 16px;
-        border-radius: 8px;
-        border: none;
+    .rainbow-line {
+        height: 5px;
         background: linear-gradient(270deg, #ff0040, #ffae00, #00ff73, #00cfff, #8b00ff, #ff0040);
         background-size: 600% 600%;
-        animation: rgbFlow 6s linear infinite;
-        text-decoration: none;
-        color: white;
-        flex: 1 1 auto;
-        text-align: center;
-        min-width: 130px;
-        transition: all 0.3s ease-in-out;
-        font-weight: bold;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        animation: wave 6s linear infinite;
+        border-radius: 10px;
+        margin: 10px 0;
     }
 
-    .nav-container a:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-    }
-
-    .nav-container .active {
-        border: 2px solid rgba(255, 255, 255, 0.4);
-    }
-
-    @keyframes rgbFlow {
+    @keyframes wave {
         0% { background-position: 0% 50%; }
         50% { background-position: 100% 50%; }
         100% { background-position: 0% 50%; }
     }
-
-    @media (max-width: 600px) {
-        .nav-container a {
-            flex: 1 1 45%;
-        }
-    }
     </style>
 """, unsafe_allow_html=True)
 
+# Rainbow bar above navbar
+st.markdown('<div class="rainbow-line"></div>', unsafe_allow_html=True)
 
+# Horizontal menu
+selected2 = option_menu(
+    menu_title=None,
+    options=["Home", "About", "Projects", "Skills", "Contact"],
+    icons=["house", "person", "briefcase", "backpack" ,"person-rolodex"],
+    menu_icon="cast",
+    default_index=0,
+    orientation="horizontal"
+)
 
+# Rainbow bar below navbar
+st.markdown('<div class="rainbow-line" style="margin-top: -10px;"></div>', unsafe_allow_html=True)
 
-# Render the navbar with anchor links
-nav_html = '<div class="nav-container">'
-for key, label in pages.items():
-    active = "active" if st.session_state.page == key else ""
-    nav_html += f'<a href="/?page={key}" class="{active}">{label}</a>'
-nav_html += '</div>'
-
-st.markdown(nav_html, unsafe_allow_html=True)
-
-
-# Routing
-page = st.query_params.get("page", "home")
-
-# Home Page
-if page == "home":
+# Display selected item
+if selected2 == "Home":
     import time
 
     def typewriter(text, speed=0.03):
@@ -198,22 +107,27 @@ if page == "home":
         st.markdown(f"<div class='chat-bubble'>{line}</div>", unsafe_allow_html=True)
         time.sleep(1.1)
 
-# Other Pages
-elif page == "about":
+
+elif selected2 == "About":
     st.header("👤 About Me")
     st.markdown("""
         <style>
+        .typewriter {
+    width: fit-content;
+    margin: auto;
+}
+        
+        
         .typewriter h3 {
-            overflow: hidden;
-            border-right: .15em solid orange;
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: .10em;
-            animation: 
-              typing 4s steps(40, end), 
-              blink-caret .75s step-end infinite;
-            color: #fff;
-        }
+    display: inline-block;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    letter-spacing: .10em;
+    animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+    color: #fff;
+}
+
 
         @keyframes typing {
             from { width: 0 }
@@ -283,7 +197,11 @@ elif page == "about":
     # Auto-type intro
     st.markdown("""
         <div class="typewriter">
-            <h3>Yuvraj Kumar - Building Intelligent products with GenAI, LLMs, and backend logics.</h3>
+          <h3>
+    Yuvraj Kumar <br>
+    Always curious, <br> 
+                always building ⚡<br>
+</h3>
         </div>
     """, unsafe_allow_html=True)
     st.markdown("<br><br>", unsafe_allow_html=True)
@@ -334,12 +252,9 @@ elif page == "about":
         </div>
         """, unsafe_allow_html=True)
 
-    
-
-
-elif page == "projects":
-
-                st.markdown("""
+elif selected2 == "Projects":
+     
+     st.markdown("""
                     <style>
                         .section-title {
                             text-align: center;
@@ -411,7 +326,7 @@ elif page == "projects":
                 """, unsafe_allow_html=True)
 
                 # --- Project 1: Lawgic AI ---
-                st.markdown("""
+     st.markdown("""
                     <div class="project-card">
                         <div class="project-name">⚖️ Lawgic AI</div>
                         <div class="tags">
@@ -432,7 +347,7 @@ elif page == "projects":
                 """, unsafe_allow_html=True)
 
                 # --- Project 2: ResuMate ---
-                st.markdown("""
+     st.markdown("""
                     <div class="project-card">
                         <div class="project-name">📄 ResuMate</div>
                         <div class="tags">
@@ -450,11 +365,9 @@ elif page == "projects":
                         </div>
                     </div>
                 """, unsafe_allow_html=True)
-
-
-elif page == "skills":
-    # --- Page setup ---
-            st.markdown("""
+    
+if selected2 == "Skills":
+    st.markdown("""
                 <style>
                     .badge-box {
                         background: rgba(255, 255, 255, 0.05);
@@ -476,15 +389,15 @@ elif page == "skills":
                 </style>
             """, unsafe_allow_html=True)
 
-            st.markdown("<div class='section-title'>🧠 Skills Dashboard</div>", unsafe_allow_html=True)
+    st.markdown("<div class='section-title'>🧠 Skills Dashboard</div>", unsafe_allow_html=True)
 
             # --- Radar Chart ---
-            categories = ['Programming Languages', 'Frameworks & Libraries', 'Web Development', 'AI/ML']
-            skills_rating = [80, 75, 70, 65]  # out of 100
+    categories = ['Programming Languages', 'Frameworks & Libraries', 'Web Development', 'AI/ML']
+    skills_rating = [80, 75, 70, 65]  # out of 100
 
-            fig = go.Figure()
+    fig = go.Figure()
 
-            fig.add_trace(go.Scatterpolar(
+    fig.add_trace(go.Scatterpolar(
                 r=skills_rating,
                 theta=categories,
                 fill='toself',
@@ -492,7 +405,7 @@ elif page == "skills":
                 line=dict(color='gold')
             ))
 
-            fig.update_layout(
+    fig.update_layout(
             polar=dict(
                 bgcolor="rgba(0,0,0,0)",
                 radialaxis=dict(
@@ -510,26 +423,26 @@ elif page == "skills":
             paper_bgcolor="rgba(0,0,0,0)"
             )
 
-            st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True)
 
             # --- Badges/Skills ---
-            st.markdown("### 🏗️ Programming Languages")
-            st.markdown("""
+    st.markdown("### 🏗️ Programming Languages")
+    st.markdown("""
             <div class="badge-box">Python</div>
             <div class="badge-box">C</div>
             <div class="badge-box">JavaScript</div>
             """, unsafe_allow_html=True)
 
-            st.markdown("### 🧰 Frameworks & Libraries")
-            st.markdown("""
+    st.markdown("### 🧰 Frameworks & Libraries")
+    st.markdown("""
             <div class="badge-box">LangChain</div>
             <div class="badge-box">Transformers</div>
             <div class="badge-box">Hugging Face</div>
             <div class="badge-box">MistralAI API</div>
             """, unsafe_allow_html=True)
 
-            st.markdown("### 🌐 Web Development")
-            st.markdown("""
+    st.markdown("### 🌐 Web Development")
+    st.markdown("""
             <div class="badge-box">HTML</div>
             <div class="badge-box">CSS</div>
             <div class="badge-box">JavaScript</div>
@@ -537,15 +450,15 @@ elif page == "skills":
             <div class="badge-box">Flask</div>
             """, unsafe_allow_html=True)
 
-            st.markdown("### 📦 DevOps & Deployment")
-            st.markdown("""
+    st.markdown("### 📦 DevOps & Deployment")
+    st.markdown("""
             <div class="badge-box">Render</div>
             <div class="badge-box">Railway</div>
             <div class="badge-box">Streamlit Cloud</div>
             """, unsafe_allow_html=True)
 
-            st.markdown("### 🤖 AI/ML")
-            st.markdown("""
+    st.markdown("### 🤖 AI/ML")
+    st.markdown("""
             <div class="badge-box">LLMs</div>
             <div class="badge-box">RAG</div>
             <div class="badge-box">Prompt Engineering</div>
@@ -553,12 +466,8 @@ elif page == "skills":
             """, unsafe_allow_html=True)
     
     
-
-
-
-
-elif page == "contact":
-                st.markdown("""
+if selected2 == "Contact":
+    st.markdown("""
                     <style>
                         [data-testid="stSidebar"] {
                             display: none;
@@ -570,7 +479,7 @@ elif page == "contact":
                 """, unsafe_allow_html=True)
 
                 # Hide sidebar
-                st.markdown("""
+    st.markdown("""
                     <style>
                         [data-testid="stSidebar"] { display: none; }
                         [data-testid="collapsedControl"] { display: none; }
@@ -599,14 +508,14 @@ elif page == "contact":
                 """, unsafe_allow_html=True)
 
                 # Title
-                st.markdown("<h1 style='text-align:center;'>📬 Contact Me</h1>", unsafe_allow_html=True)
-                st.markdown("<p style='text-align:center;'>Let's connect, collaborate, or create something incredible together.</p>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align:center;'>📬 Contact Me</h1>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align:center;'>Let's connect, collaborate, or create something incredible together.</p>", unsafe_allow_html=True)
 
                 # --- AI Chatbox Section ---
-                st.markdown("### 🤖 Ask me anything!")
+    st.markdown("### 🤖 Ask me anything!")
 
                 # Chat context
-                preset_responses = {
+    preset_responses = {
                         "Who are you?": "I'm Yuvraj Kumar — a developer crafting smart systems with LLMs, GenAI, and backend engineering. Passionate about building real-world AI tools using LangChain, Flask, Streamlit, and Django, I'm currently deep-diving into LLM internals, fine-tuning, and creating AI agents that actually do stuff.",
                         "How to contact": "You can email me at yuvrajkumar.dev@gmail.com or use the social links below.",
                         "Resume": "You can click below to access my resume or visit my LinkedIn.",
@@ -615,14 +524,14 @@ elif page == "contact":
                     }
 
                     # --- Select-based Chat ---
-                option = st.selectbox("🤖 Ask a question:", list(preset_responses.keys()))
+    option = st.selectbox("🤖 Ask a question:", list(preset_responses.keys()))
 
-                if option:
+    if option:
                         st.markdown(f"<div class='chat-bubble user'>🧑‍💻 You: {option}</div>", unsafe_allow_html=True)
                         st.markdown(f"<div class='chat-bubble bot'>🤖: {preset_responses[option]}</div>", unsafe_allow_html=True)
 
                     # --- QR Code Section ---
-                if option == "Resume":
+    if option == "Resume":
                         import requests
 
                         st.markdown("### 📄 My Resume")
@@ -645,8 +554,8 @@ elif page == "contact":
                     
 
                     # --- Contact Buttons ---
-                st.markdown("### 🌐 Social Links")
-                st.markdown("""
+    st.markdown("### 🌐 Social Links")
+    st.markdown("""
                     <div class="social-icons">
                         <a href="mailto:yuvrajkumar.dev@gmail.com" target="_blank">📧 Email</a>
                         <a href="https://github.com/yuvraj-kumar-dev" target="_blank">💻 GitHub</a>
@@ -656,4 +565,7 @@ elif page == "contact":
                     """, unsafe_allow_html=True)
 
                     # Rain effect
-                rain(emoji="✉️", font_size=20, falling_speed=5, animation_length="infinite")
+    rain(emoji="✉️", font_size=20, falling_speed=5, animation_length="infinite")
+
+
+
