@@ -3,6 +3,8 @@ from streamlit_option_menu import option_menu
 import plotly.graph_objects as go
 from streamlit_extras.let_it_rain import rain
 
+st.set_page_config(page_title="Welcome | Yuvraj", layout="wide")
+
 # Rainbow wave CSS bar
 st.markdown("""
     <style>
