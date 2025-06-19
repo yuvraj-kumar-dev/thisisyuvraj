@@ -99,8 +99,8 @@ if selected2 == "Home":
     chat_lines = [
         "🤖: Hey, I’m <strong><strong style='color:#ff2800;font-family:monospace;'>Yuvraj</strong> — I don’t just chat with LLMs, I build them.",
         "🤖: I work with <strong>LLMs, RAG pipelines, and backend systems</strong> to create powerful AI-driven apps.",
-        "🤖: I build with LangChain, Flask, Django, Streamlit, and FAISS — the full-stack force behind my AI tools.",
-        "🤖: Always curious, always building ⚡",
+        "🤖: I build with <strong>LangChain, Flask, Django, Streamlit, and FAISS</strong> — the full-stack force behind my AI tools.",
+        "🤖: <strong>Always curious</strong>, <strong>always building ⚡</strong>",
     ]
 
     for line in chat_lines:
