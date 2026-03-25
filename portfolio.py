@@ -99,8 +99,8 @@ if selected2 == "Home":
     chat_lines = [
         "🤖: Hey, I’m <strong><strong style='color:#ff2800;font-family:monospace;'>Yuvraj</strong> — I don’t just chat with LLMs, I build them.",
         "🤖: I work with <strong>LLMs, RAG pipelines, and backend systems</strong> to create powerful AI-driven apps.",
-        "🤖: I build with <strong>LangChain, Flask, Django, Streamlit, and FAISS</strong> — the full-stack force behind my AI tools.",
-        "🤖: <strong>Always curious</strong>, <strong>always building ⚡</strong>",
+        "🤖: I build with LangChain, Flask, Django, Streamlit, and FAISS — the full-stack force behind my AI tools.",
+        "🤖: Always curious, always building ⚡",
     ]
 
     for line in chat_lines:
@@ -113,21 +113,19 @@ elif selected2 == "About":
     st.markdown("""
         <style>
         .typewriter {
-    width: fit-content;
-    margin: auto;
-}
-        
-        
-        .typewriter h3 {
-    display: inline-block;
-    overflow: hidden;
-    border-right: .15em solid orange;
-    white-space: nowrap;
-    letter-spacing: .10em;
-    animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
-    color: #fff;
-}
+            width: fit-content;
+            margin: auto;
+        }
 
+        .typewriter h3 {
+            display: inline-block;
+            overflow: hidden;
+            border-right: .15em solid orange;
+            white-space: nowrap;
+            letter-spacing: .10em;
+            animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+            color: #fff;
+        }
 
         @keyframes typing {
             from { width: 0 }
@@ -144,9 +142,11 @@ elif selected2 == "About":
             margin-left: 20px;
             padding-left: 20px;
         }
+
         .timeline-item {
             margin-bottom: 20px;
         }
+
         .timeline-item h4 {
             margin-bottom: 4px;
             color: #FFD700;
@@ -198,42 +198,30 @@ elif selected2 == "About":
     st.markdown("""
         <div class="typewriter">
           <h3>
-    Yuvraj Kumar <br>
-    Always curious, <br> 
-                always building ⚡<br>
-</h3>
+            Yuvraj Kumar <br>
+            Always curious, <br> 
+            always building ⚡<br>
+          </h3>
         </div>
     """, unsafe_allow_html=True)
-    st.markdown("<br><br>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
 
-    # Timeline
-    st.subheader("🛤️ My Journey Into AI")
-    st.markdown("""
-    <div class="timeline">
-        <div class="timeline-item">
-            <h4>2024 – Discovery</h4>
-            <p>Got curious about how ChatGPT works. It blew my mind and changed my career path.</p>
+    st.subheader("💼 Work Experience")
+    work_cols = st.columns(1)
+    with work_cols[0]:
+        st.markdown("""
+        <div class="belief-card">
+            <h5>AI Engineer Intern — Stealth AI Startup (London)</h5>
+            <p><b>Duration:</b> Mar 2026 – Present | <b>Remote</b></p>
+            <p>As an AI Engineer Intern, I am building and maintaining AI automation workflows, 
+            integrating LLMs into scalable pipelines, and designing system workflows and prompt logic to improve output quality. 
+            I implement web scraping pipelines for structured data extraction, while continuously debugging, testing, and optimizing workflows to ensure stability and performance. 
+            Additionally, I conduct competitor analysis to monitor emerging trends and inform improvements to AI systems and workflows.
+            </p>        
         </div>
-        <div class="timeline-item">
-            <h4>2025 - First Real Build</h4>
-            <p>
-                I built my first AI-powered project using LangChain, Mistral AI, Streamlit, and Django — 
-                combining LLMs with solid backend logic to create a working product. 
-                It was the “this is what I want to do” moment.
-            </p>
-        </div>
-        <div class="timeline-item">
-            <h4>Currently — Learning from the Roots</h4>
-            <p>
-                I’m now exploring Generative AI and LLMs from the ground up — going deep into how they actually work. 
-                I’m also studying “LLMs From Scratch” by Sebastian Raschka to strengthen my understanding of tokenization, 
-                architecture, training, and fine-tuning. 
-            </p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
-    #certification and achievements
+    # Certifications and Achievements
     st.markdown("<br>", unsafe_allow_html=True)
     st.subheader("🏆 Certifications & Achievements")
     belief_cols = st.columns(2)
@@ -251,6 +239,52 @@ elif selected2 == "About":
             <p>Mastered backend and frontend development with Django, SQL, JavaScript, and more.</p>
         </div>
         """, unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # Timeline
+    st.subheader("🛤️ My Journey Into AI")
+    st.markdown("""
+    <div class="timeline">
+        <div class="timeline-item">
+            <h4>Currently — Exploring Advanced AI</h4>
+            <p>Diving into Agentic AI, advanced LLMs (RNNs, Transformers), NLP, and generative AI.
+            Building a deeper understanding of AI architectures, prompt engineering, and system-level AI integration.</p>
+        </div>
+        <div class="timeline-item">
+            <h4>March – September 2026 — AI Engineer Intern</h4>
+            <p>
+                 Secured a remote internship at a stealth AI startup (London-based). 
+            Focused on building and maintaining AI automation workflows, integrating LLMs, 
+            designing system workflows and prompt logic, implementing web scraping pipelines, 
+            and debugging/testing for performance and reliability.
+            </p>
+        </div>
+        <div class="timeline-item">
+            <h4>October 2025 – Learning AI/ML Foundations</h4>
+            <p>
+            Started deep dive into AI/ML, beginning with Statistical ML, then Deep Learning & Neural Networks 
+            (FNN, CNN) using PyTorch, along with practical tools like scikit-learn, NumPy, Pandas, and Matplotlib. 
+            Learned ML algorithms, preprocessing, and model evaluation from scratch.
+            </p>
+        </div>
+        <div class="timeline-item">
+            <h4>2025 – First Real Build</h4>
+            <p>
+            Built my first AI-powered project using LangChain, Mistral AI, Streamlit, and Django — 
+            combining LLMs with solid backend logic to create a working product. 
+            It was the “this is what I want to do” moment.
+            </p>
+        </div>
+        <div class="timeline-item">
+            <h4>2024 – Discovery</h4>
+            <p>
+            Got curious about how ChatGPT works. It blew my mind and changed my career path.
+            </p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
 
 elif selected2 == "Projects":
      
@@ -566,6 +600,3 @@ if selected2 == "Contact":
 
                     # Rain effect
     rain(emoji="✉️", font_size=20, falling_speed=5, animation_length="infinite")
-
-
-
