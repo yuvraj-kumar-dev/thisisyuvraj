@@ -97,11 +97,11 @@ if selected2 == "Home":
     """, unsafe_allow_html=True)
 
     chat_lines = [
-        "🤖: Hey, I’m <strong><strong style='color:#ff2800;font-family:monospace;'>Yuvraj</strong> — I don’t just chat with LLMs, I build them.",
-        "🤖: I work with <strong>LLMs, RAG pipelines, and backend systems</strong> to create powerful AI-driven apps.",
-        "🤖: I build with LangChain, Flask, Django, Streamlit, and FAISS — the full-stack force behind my AI tools.",
-        "🤖: Always curious, always building ⚡",
-    ]
+    "🤖: Hey, I’m <strong style='color:#ff2800;font-family:monospace;'>Yuvraj</strong> — I build AI systems that think, act, and evolve.",
+    "🤖: I specialize in <strong>Agentic AI, RAG architectures, and autonomous workflows</strong> that go beyond simple chatbots.",
+    "🤖: I turn complex ideas into <strong>real, deployed AI products</strong> — from backend logic to intelligent decision-making systems.",
+    "🤖: Always curious, always building ⚡",
+]
 
     for line in chat_lines:
         st.markdown(f"<div class='chat-bubble'>{line}</div>", unsafe_allow_html=True)
@@ -289,74 +289,106 @@ elif selected2 == "About":
 elif selected2 == "Projects":
      
      st.markdown("""
-                    <style>
-                        .section-title {
-                            text-align: center;
-                            font-size: 30px;
-                            color: #ff2800;
-                            margin-bottom: 40px;
-                        }
+                <style>
+                .section-title {
+                    text-align: center;
+                    font-size: 30px;
+                    color: #ff2800;
+                    margin-bottom: 40px;
+                }
 
-                        .project-card {
-                            background: rgba(255, 255, 255, 0.05);
-                            border: 1px solid #333;
-                            padding: 1.5rem;
-                            border-radius: 15px;
-                            margin-bottom: 2rem;
-                            box-shadow: 0 0 20px rgba(255,255,255,0.05);
-                            transition: all 0.3s ease;
-                        }
+                .project-card {
+                    background: rgba(255, 255, 255, 0.05);
+                    border: 1px solid #333;
+                    padding: 1.5rem;
+                    border-radius: 15px;
+                    margin-bottom: 2rem;
+                    box-shadow: 0 0 20px rgba(255,255,255,0.05);
+                    transition: all 0.3s ease;
+                }
 
-                        .project-card:hover {
-                            transform: translateY(-5px);
-                            box-shadow: 0 0 25px rgba(255,255,255,0.1);
-                        }
+                .project-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 0 25px rgba(255,255,255,0.1);
+                }
 
-                        .project-name {
-                            font-size: 24px;
-                            font-weight: bold;
-                            color: #fff;
-                        }
+                .project-name {
+                    font-size: 22px;
+                    font-weight: bold;
+                    color: #fff;
+                }
 
-                        .tags {
-                            margin: 0.5rem 0;
-                        }
+               
+                .tags {
+                    margin: 0.8rem 0;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                }
 
-                        .tag {
-                            display: inline-block;
-                            background: #ff2800;
-                            color: black;
-                            padding: 0.3rem 0.6rem;
-                            border-radius: 5px;
-                            margin-right: 0.5rem;
-                            font-size: 13px;
-                            font-weight: 600;
-                        }
+                .tag {
+                    background: #ff2800;
+                    color: black;
+                    padding: 0.3rem 0.7rem;
+                    border-radius: 6px;
+                    font-size: 12px;
+                    font-weight: 600;
+                }
 
-                        .project-desc {
-                            color: #ccc;
-                            margin: 1rem 0;
-                            font-size: 16px;
-                        }
+          
+                .project-desc {
+                    color: #ccc;
+                    margin: 1rem 0;
+                    font-size: 15px;
+                }
 
-                        .buttons a {
-                            text-decoration: none;
-                            padding: 0.4rem 0.8rem;
-                            margin-right: 1rem;
-                            background: transparent;
-                            border: 1px solid #ff2800;
-                            color: #FFD700;
-                            border-radius: 5px;
-                            font-weight: 500;
-                        }
+                
+                .buttons {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                }
 
-                        .buttons a:hover {
-                            background: #ff2800;
-                            color: black;
-                        }
-                    </style>
+              
+                .buttons a {
+                    text-decoration: none;
+                    padding: 0.5rem 0.9rem;
+                    background: transparent;
+                    border: 1px solid #ff2800;
+                    color: #FFD700;
+                    border-radius: 6px;
+                    font-weight: 500;
+                    font-size: 14px;
+                    text-align: center;
+                }
 
-                    <div class="section-title">🚀 Featured Projects</div>
+                
+                .buttons a:hover {
+                    background: #ff2800;
+                    color: black;
+                }
+
+                
+                @media (max-width: 600px) {
+                    .project-name {
+                        font-size: 18px;
+                    }
+
+                    .project-desc {
+                        font-size: 14px;
+                    }
+
+                    .buttons {
+                        flex-direction: column;
+                    }
+
+                    .buttons a {
+                        width: 100%;
+                    }
+                }
+                </style>
+
+                <div class="section-title">🚀 Projects</div>
                 """, unsafe_allow_html=True)
 
                 # --- Project 1: Lawgic AI ---
@@ -413,6 +445,12 @@ if selected2 == "Skills":
                         color: white;
                         font-weight: 500;
                         box-shadow: 0 0 10px rgba(255,255,255,0.1);
+                        transition: 0.3s;
+                    }
+                    .badge-box:hover {
+                        transform: scale(1.05);
+                        border-color: gold;
+                        box-shadow: 0 0 15px rgba(255,215,0,0.4);
                     }
                     .section-title {
                         text-align: center;
@@ -425,79 +463,58 @@ if selected2 == "Skills":
 
     st.markdown("<div class='section-title'>🧠 Skills Dashboard</div>", unsafe_allow_html=True)
 
-            # --- Radar Chart ---
-    categories = ['Programming Languages', 'Frameworks & Libraries', 'Web Development', 'AI/ML']
-    skills_rating = [80, 75, 70, 65]  # out of 100
+    # --- Skills Sections ---
 
-    fig = go.Figure()
-
-    fig.add_trace(go.Scatterpolar(
-                r=skills_rating,
-                theta=categories,
-                fill='toself',
-                name='Skill Level',
-                line=dict(color='gold')
-            ))
-
-    fig.update_layout(
-            polar=dict(
-                bgcolor="rgba(0,0,0,0)",
-                radialaxis=dict(
-                visible=True,
-                range=[0, 100],
-                gridcolor='gray',
-                linecolor='white',
-                tickfont=dict(color='white')
-                ),
-                angularaxis=dict(
-                    tickfont=dict(color='white')
-                )
-            ),
-            showlegend=False,
-            paper_bgcolor="rgba(0,0,0,0)"
-            )
-
-    st.plotly_chart(fig, use_container_width=True)
-
-            # --- Badges/Skills ---
     st.markdown("### 🏗️ Programming Languages")
     st.markdown("""
-            <div class="badge-box">Python</div>
-            <div class="badge-box">C</div>
-            <div class="badge-box">JavaScript</div>
-            """, unsafe_allow_html=True)
-
-    st.markdown("### 🧰 Frameworks & Libraries")
-    st.markdown("""
-            <div class="badge-box">LangChain</div>
-            <div class="badge-box">Transformers</div>
-            <div class="badge-box">Hugging Face</div>
-            <div class="badge-box">MistralAI API</div>
-            """, unsafe_allow_html=True)
+        <div class="badge-box">Python</div>
+        <div class="badge-box">C</div>
+        <div class="badge-box">Java</div>
+    """, unsafe_allow_html=True)
 
     st.markdown("### 🌐 Web Development")
     st.markdown("""
-            <div class="badge-box">HTML</div>
-            <div class="badge-box">CSS</div>
-            <div class="badge-box">JavaScript</div>
-            <div class="badge-box">Django</div>
-            <div class="badge-box">Flask</div>
-            """, unsafe_allow_html=True)
+        <div class="badge-box">Flask</div>
+        <div class="badge-box">Django</div>
+        <div class="badge-box">Streamlit</div>
+        <div class="badge-box">HTML</div>
+        <div class="badge-box">CSS</div>
+        <div class="badge-box">JavaScript</div>
+    """, unsafe_allow_html=True)
 
-    st.markdown("### 📦 DevOps & Deployment")
+    st.markdown("### 🤖 AI / Machine Learning")
     st.markdown("""
-            <div class="badge-box">Render</div>
-            <div class="badge-box">Railway</div>
-            <div class="badge-box">Streamlit Cloud</div>
-            """, unsafe_allow_html=True)
+        <div class="badge-box">Scikit-learn</div>
+        <div class="badge-box">XGBoost</div>
+        <div class="badge-box">CatBoost</div>
+        <div class="badge-box">PyTorch</div>
+        <div class="badge-box">CNN</div>
+        <div class="badge-box">NumPy</div>
+        <div class="badge-box">Pandas</div>
+        <div class="badge-box">Matplotlib</div>
+    """, unsafe_allow_html=True)
 
-    st.markdown("### 🤖 AI/ML")
+    st.markdown("### 🧠 LLM & GenAI Stack")
     st.markdown("""
-            <div class="badge-box">LLMs</div>
-            <div class="badge-box">RAG</div>
-            <div class="badge-box">Prompt Engineering</div>
-            <div class="badge-box">Fine-Tuning</div>
-            """, unsafe_allow_html=True)
+        <div class="badge-box">LangChain</div>
+        <div class="badge-box">LangGraph</div>
+        <div class="badge-box">Hugging Face</div>
+        <div class="badge-box">RAG</div>
+        <div class="badge-box">Prompt Engineering</div>
+        <div class="badge-box">Fine-Tuning</div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("### 🛠️ Tools & Platforms")
+    st.markdown("""
+        <div class="badge-box">Git</div>
+        <div class="badge-box">VS Code</div>
+        <div class="badge-box">Jupyter Notebook</div>
+        <div class="badge-box">Kaggle</div>
+        <div class="badge-box">n8n</div>
+        <div class="badge-box">Render</div>
+        <div class="badge-box">Railway</div>
+        <div class="badge-box">Streamlit Cloud</div>
+    """, unsafe_allow_html=True)
     
     
 if selected2 == "Contact":
@@ -545,8 +562,6 @@ if selected2 == "Contact":
     st.markdown("<h1 style='text-align:center;'>📬 Contact Me</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align:center;'>Let's connect, collaborate, or create something incredible together.</p>", unsafe_allow_html=True)
 
-                # --- AI Chatbox Section ---
-    st.markdown("### 🤖 Ask me anything!")
 
                 # Chat context
     preset_responses = {
@@ -571,9 +586,8 @@ if selected2 == "Contact":
                         st.markdown("### 📄 My Resume")
 
                         # View and download links
-                        view_link = "https://drive.google.com/file/d/1Sfv7nIERz90GdRyf8XQSI88uqadpu9Ny/view"
-                        download_link = "https://drive.google.com/uc?export=download&id=1Sfv7nIERz90GdRyf8XQSI88uqadpu9Ny"
-
+                        view_link = "https://drive.google.com/file/d/1br93cUflDrQbRqxFTIR3gcrGX7p5-GRR/view"
+                        download_link = "https://drive.google.com/uc?export=download&id=1br93cUflDrQbRqxFTIR3gcrGX7p5-GRR"
                         # View resume as hyperlink
                         st.markdown(f"[👀 View Resume]({view_link})", unsafe_allow_html=True)
 
