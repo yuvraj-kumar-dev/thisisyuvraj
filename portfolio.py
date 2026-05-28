@@ -427,7 +427,7 @@ elif selected2 == "Projects":
                         </div>
                         <div class="buttons">
                             <a href="https://github.com/yuvraj-kumar-dev/ResuMate" target="_blank">GitHub</a>
-                            <a href="https://resu-mate.streamlit.app/" target="_blank">Live Demo</a>
+                            <a href="https://resu-mate.onrender.com/" target="_blank">Live Demo</a>
                         </div>
                     </div>
                 """, unsafe_allow_html=True)
